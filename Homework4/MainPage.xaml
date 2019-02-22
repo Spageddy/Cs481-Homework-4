@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Homework4"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    x:Class="Homework4.MainPage">
+<StackLayout >
+        <Label
+            VerticalOptions="Center"
+            Text="Monsters"
+            FontSize="Large"
+            HorizontalOptions="Center"/>
+        <ListView
+            CachingStrategy="RecycleElement"
+            RefreshAllowed="true"
+            HasUnevenRows="true"
+            ItemTapped="Handle_ItemTapped"
+            Refreshing="Handle_Refreshing"
+            IsPullToRefreshEnabled="true"
+            x:Name="MonsterListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <forms:AnimationView
+                                Animation="{Binding ISource}"
+                                Loop="true"
+                                AutoPlay="true"
+                                HeightRequest="100"
+                                WidthRequest="100"/>
+                            <StackLayout
+                                Orientation="Vertical">
+                                <Label
+                                    Text="{Binding MonsterName}"/>
+                                <Label
+                                    TextColor="Gray"
+                                    Text="{Binding Difficulty,StringFormat='Difficulty: {0}'}"/>
+                                <Label
+                                    TextColor="Gray"
+                                    Text="{Binding Health,StringFormat='Health: {0}'}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>
